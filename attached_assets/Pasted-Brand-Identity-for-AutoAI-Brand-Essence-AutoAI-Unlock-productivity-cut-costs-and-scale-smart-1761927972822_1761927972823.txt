@@ -1,0 +1,119 @@
+Brand Identity for AutoAI
+🧠 Brand Essence
+
+AutoAI — Unlock productivity, cut costs, and scale smarter with no-code/low-code + custom AI workflows.
+
+Core Promise: Real automations, real results.
+Tone: Modern, confident, and expert — no hype, just clarity and ROI.
+
+🎨 Visual Identity (recommended)
+Element	Suggestion	Reason
+Logo concept	Minimal gear + spark or AI brain icon beside “AutoAI”	Symbolizes automation & intelligence
+Primary color	Deep blue (#0F172A) or charcoal black	Feels professional and tech-trusted
+Accent color	Electric cyan (#00FFFF) or neon green (#00D084)	Suggests innovation and action
+Typography	Heading: Poppins / Inter / Plus Jakarta Sans
+Body: Inter / Open Sans	Clean, modern, tech-friendly
+Visual style	Geometric shapes, light animations, icons with gradient highlights	Matches AI + automation themes
+🌐 Suggested Website Structure
+1. Hero Section
+
+“AI Automations for Real Businesses”
+Unlock productivity, cut costs, and scale smarter with no-code/low-code + custom AI workflows.
+CTA: Book a free 15-minute consult
+Secondary CTA: See example automations
+
+💡 Include a clean background animation (flowing data or AI nodes).
+
+2. About AutoAI
+
+Who we are:
+We design, build, and maintain AI-powered automations that remove repetitive work and connect your tools end-to-end.
+
+What we do:
+6 grid cards (with icons):
+
+AI chatbots & assistants
+
+Lead capture & CRM routing
+
+E-commerce ops
+
+Content & social automation
+
+Data integration & ETL
+
+Internal process automation
+
+3. How We Work
+
+Visually represented as a timeline:
+
+Discover — 30–45 min call to map workflow and success metrics
+
+Design — Visual blueprint of triggers, actions, data flow
+
+Build — Implementation with n8n + APIs + Python
+
+Validate — Test and measure time saved
+
+Launch — Handover & training
+
+Care — Monitoring and SLA options
+
+4. Tech We Use
+
+Logos grid:
+n8n | OpenAI | Python | Airflow | Zapier | Snowflake | GSheets | Slack | WhatsApp | Notion
+
+5. Featured Solutions
+
+4 cards:
+
+LeadGen AI — Capture → enrich → qualify → CRM
+
+Support Copilot — Ticket classification + draft replies
+
+ShopFlow Pro — Order sync, stock updates, tracking
+
+Content Studio — Repurpose + post automatically
+
+6. Packages & Pricing
+Tier	Description	Price
+Starter Automation	1 workflow, 3 integrations	€199–€399
+Business Integration	3–5 workflows, CRM/ERP sync	€699–€1,199
+Custom AI System	Bespoke agent/pipeline	from €1,500
+
+Add a note: “All packages include consultation, documentation & testing.”
+
+7. Outcomes & Proof
+
+✅ 60–80% time saved
+✅ Fewer manual errors
+✅ Clear dashboards
+✅ Real ROI in under 30 days
+
+Add 1–2 case studies or testimonials once available.
+
+8. FAQs
+
+Do you work with our tools? Yes — we integrate via APIs and webhooks.
+Languages? Romanian & English.
+Security? Least-privilege access & encrypted secrets.
+Support? Optional monthly SLA with monitoring & improvements.
+
+9. Call to Action
+
+“Ready to automate? Tell us your process and we’ll map it to a working solution in days, not months.”
+Form fields: Name • Email • Company • Tooling • What should the automation do?
+
+🚀 Next Steps
+
+Here’s what I can help you build next — choose what you want first:
+
+🎨 Website wireframe (Framer/Webflow-ready) – complete layout & section design
+
+📘 Brand kit – logo concepts, color palette, fonts, usage guide
+
+📄 Pitch deck / brochure – 10-slide client presentation or downloadable PDF
+
+🧩 Landing page code (Next.js + Tailwind) – developer-ready file for hosting on Vercel
