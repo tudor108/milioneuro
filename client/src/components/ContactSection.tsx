@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Clock, MapPin } from "lucide-react";
+import { Mail, Clock, MapPin, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,10 +15,68 @@ export default function ContactSection() {
     tooling: "",
     requirements: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Check if response is OK before parsing
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server error ${response.status}: ${errorText || response.statusText}`);
+      }
+
+      let data;
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        throw new Error(`Invalid response from server: ${response.status} ${response.statusText}`);
+      }
+
+      if (response.ok && data.success) {
+        toast({
+          title: "Request sent successfully!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          tooling: "",
+          requirements: ""
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "Failed to send request. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error: any) {
+      console.error("Contact form error:", error);
+      const errorMessage = error.message || "Failed to send request. Please try again later.";
+      toast({
+        title: "Error",
+        description: errorMessage.includes("fetch") 
+          ? "Cannot connect to server. Make sure the server is running (npm run dev:server)."
+          : errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -114,8 +173,16 @@ export default function ContactSection() {
                 className="w-full"
                 size="lg"
                 data-testid="button-submit-contact"
+                disabled={isSubmitting}
               >
-                Send Request
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Send Request"
+                )}
               </Button>
             </form>
           </Card>
