@@ -1,40 +1,35 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import { resolve } from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
   plugins: [
     react(),
     runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
+    ...(process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined
       ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
+          await import("@replit/vite-plugin-cartographer").then((m) => m.cartographer()),
+          await import("@replit/vite-plugin-dev-banner").then((m) => m.devBanner()),
         ]
       : []),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+      "@": resolve(process.cwd(), "client", "src"),
+      "@shared": resolve(process.cwd(), "shared"),
+      "@assets": resolve(process.cwd(), "attached_assets"),
     },
   },
-  root: path.resolve(import.meta.dirname, "client"),
+  // Aplicația UI trăiește în client/
+  root: resolve(process.cwd(), "client"),
+  // IMPORTANT: build-ul final în dist/ (NU dist/public)
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: resolve(process.cwd(), "dist"),
     emptyOutDir: true,
   },
-  server: {
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
-  },
+  // preview/dev porturi standard
+  server: { port: 5173 },
+  preview: { port: 4173 },
+  // rutele SPA vor funcționa cu vercel.json (vezi mai jos)
 });
