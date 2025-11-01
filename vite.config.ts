@@ -29,7 +29,17 @@ export default defineConfig({
     emptyOutDir: true,
   },
   // preview/dev porturi standard
-  server: { port: 5173 },
+  server: { 
+    port: 5173,
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:5000",
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
+    },
+  },
   preview: { port: 4173 },
   // rutele SPA vor funcționa cu vercel.json (vezi mai jos)
 });
