@@ -35,6 +35,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
         } : undefined,
+        connectionTimeout: 10000, // 10 seconds timeout for connection
+        greetingTimeout: 10000, // 10 seconds timeout for greeting
+        socketTimeout: 10000, // 10 seconds socket timeout
       });
 
       console.log("SMTP transporter created, preparing email...");
@@ -67,10 +70,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         `,
       };
 
-      // Send email (verify is done automatically by sendMail if needed)
+      // Send email with timeout
       console.log("Sending email...");
-      await transporter.sendMail(mailOptions);
-      console.log("Email sent successfully!");
+      const startTime = Date.now();
+      const emailPromise = transporter.sendMail(mailOptions);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Email send timeout after 30 seconds")), 30000)
+      );
+      
+      await Promise.race([emailPromise, timeoutPromise]);
+      const duration = Date.now() - startTime;
+      console.log(`Email sent successfully! Took ${duration}ms`);
 
       res.json({ 
         success: true, 
