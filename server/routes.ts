@@ -40,9 +40,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log("Sending email via Resend...");
       const startTime = Date.now();
       
+      // Resend free plan only allows sending to the account's email
+      // Make sure your Resend account email is set to autoai831@gmail.com
+      const recipientEmail = process.env.RESEND_TO_EMAIL || "autoai831@gmail.com";
+      
       const { data, error } = await resend.emails.send({
         from: "AutoAI <onboarding@resend.dev>",
-        to: "autoai831@gmail.com",
+        to: recipientEmail,
         subject: `New Contact Form Submission from ${name}`,
         html: `
           <h2>New Contact Form Submission</h2>
