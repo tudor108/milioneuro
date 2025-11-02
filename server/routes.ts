@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
@@ -25,27 +25,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
-      console.log("Creating SMTP transporter...");
-      // Create transporter (using Gmail SMTP as default, but can be configured via env vars)
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "smtp.gmail.com",
-        port: parseInt(process.env.SMTP_PORT || "587", 10),
-        secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
-        auth: process.env.SMTP_USER && process.env.SMTP_PASS ? {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        } : undefined,
-        connectionTimeout: 10000, // 10 seconds timeout for connection
-        greetingTimeout: 10000, // 10 seconds timeout for greeting
-        socketTimeout: 10000, // 10 seconds socket timeout
-      });
+      // Check for Resend API key
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error("RESEND_API_KEY is not set. Please configure it in Render environment variables.");
+      }
 
-      console.log("SMTP transporter created, preparing email...");
+      console.log("Initializing Resend client...");
+      const resend = new Resend(process.env.RESEND_API_KEY);
 
-      // Email content
+      console.log("Preparing email content...");
       const safeRequirements = (requirements || "").replace(/\n/g, "<br>");
-      const mailOptions = {
-        from: process.env.SMTP_FROM || email,
+
+      // Send email using Resend
+      console.log("Sending email via Resend...");
+      const startTime = Date.now();
+      
+      const { data, error } = await resend.emails.send({
+        from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
         to: "autoai831@gmail.com",
         subject: `New Contact Form Submission from ${name}`,
         html: `
@@ -68,19 +64,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           Automation Requirements:
           ${requirements || ""}
         `,
-      };
+      });
 
-      // Send email with timeout
-      console.log("Sending email...");
-      const startTime = Date.now();
-      const emailPromise = transporter.sendMail(mailOptions);
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error("Email send timeout after 30 seconds")), 30000)
-      );
-      
-      await Promise.race([emailPromise, timeoutPromise]);
+      if (error) {
+        throw new Error(`Resend error: ${error.message}`);
+      }
+
       const duration = Date.now() - startTime;
-      console.log(`Email sent successfully! Took ${duration}ms`);
+      console.log(`Email sent successfully via Resend! ID: ${data?.id}, Took ${duration}ms`);
 
       res.json({ 
         success: true, 
