@@ -53,32 +53,6 @@ const solutions = [
         "OCR for scanned PDFs (Tesseract or cloud)",
         "Direct ERP APIs (Xero, QuickBooks, SAP)",
         "Slack or Teams approval buttons"
-      ],
-      testimonials: [
-        {
-          quote: "Month-end stopped being firefighting. Clean entries post automatically and cash lands sooner.",
-          author: "Lena Park",
-          role: "Finance Lead",
-          company: "OrbitCloud",
-          verified: "Verified 2025-08-10",
-          goLive: "Live in 12 days",
-          results: "Results inside 45 days",
-          metrics: ["-79% manual entry time", "-21% DSO", "99.5% posting accuracy"],
-          stack: "Stack: n8n-only (IMAP, Data Store, Code, Spreadsheet File, Email Send)",
-          proof: "Proof: Redacted run log on file"
-        },
-        {
-          quote: "Approvals in email plus webhook clicks were all we needed—no extra finance tools required.",
-          author: "Mihai Radu",
-          role: "CFO",
-          company: "Series A Marketplace (EU)",
-          verified: "Verified 2025-08-07",
-          goLive: "Live in 14 days across 3 entities",
-          results: "Stabilized within 60 days",
-          metrics: ["3.2k invoices/month", "0 duplicate posts", "<5 min approval cycle"],
-          stack: "Stack: n8n-only (IMAP, Data Store, Code, Email Send)",
-          proof: "Proof: Redacted CSV export on file"
-        }
       ]
     }
   },
@@ -125,32 +99,6 @@ const solutions = [
         "Direct ad API imports (Google, Meta, LinkedIn)",
         "Push cleaned data to GA4 or your CRM",
         "Optional BigQuery/Snowflake loaders"
-      ],
-      testimonials: [
-        {
-          quote: "The UTM cleaner killed ‘(not set)’ overnight and every channel name finally matches.",
-          author: "Amrita Shah",
-          role: "Head of Growth",
-          company: "FluxGrid",
-          verified: "Verified 2025-08-08",
-          goLive: "Live in 9 days",
-          results: "Results inside 30 days",
-          metrics: ["0% ‘(not set)’ in exports", "+18% MQL attribution accuracy", "1 source-of-truth CSV daily"],
-          stack: "Stack: n8n-only (Webhook, Data Store, Code, Spreadsheet File)",
-          proof: "Proof: Redacted channel export on file"
-        },
-        {
-          quote: "No ad APIs needed—cost CSV drops merge overnight and flow straight into our BI dashboards.",
-          author: "Victor Ciobanu",
-          role: "Marketing Ops Lead",
-          company: "DevTools SaaS (SMB)",
-          verified: "Verified 2025-08-05",
-          goLive: "Live in 11 days",
-          results: "Reports automated within 2 weeks",
-          metrics: ["5 ad accounts", "2 currencies harmonized", "Reports ready 08:00 daily"],
-          stack: "Stack: n8n-only (Spreadsheet File, Data Store, Cron, Email Send)",
-          proof: "Proof: Redacted BI export on file"
-        }
       ]
     }
   },
@@ -197,20 +145,6 @@ const solutions = [
         "Sync tasks to Jira/Asana/CS tools",
         "Slack or Teams notifications",
         "Product analytics enrichment"
-      ],
-      testimonials: [
-        {
-          quote: "Kickoff, checklists, and training drip now run themselves—our CS team finally focuses on customers.",
-          author: "Ioana Popescu",
-          role: "Customer Success Lead",
-          company: "DataOps SaaS",
-          verified: "Verified 2025-08-06",
-          goLive: "Live in 10 days",
-          results: "Results inside 6 weeks",
-          metrics: ["-42% time-to-first-value", "+28% activation rate", "CSAT 4.9/5 at onboarding"],
-          stack: "Stack: n8n-only (IMAP, Webhook, Data Store, Email Send, ICS)",
-          proof: "Proof: Redacted onboarding summary on file"
-        }
       ]
     }
   },
@@ -257,32 +191,6 @@ const solutions = [
         "Stripe/Chargebee/Recurly webhooks",
         "CRM enrichment and task sync",
         "WhatsApp/Twilio adapters"
-      ],
-      testimonials: [
-        {
-          quote: "We quietly recovered failing payments and flagged risk early—NRR finally moved up.",
-          author: "Jonah Ruiz",
-          role: "CRO",
-          company: "HelixAI",
-          verified: "Verified 2025-08-09",
-          goLive: "Live in 11 days",
-          results: "Results inside 60 days",
-          metrics: ["+41% payment recovery", "-33% involuntary churn", "Weekly revenue pack in inbox"],
-          stack: "Stack: n8n-only (Webhook, Data Store, Code, Email Send, Spreadsheet File)",
-          proof: "Proof: Redacted weekly pack on file"
-        },
-        {
-          quote: "Rule-based scoring in Data Stores stays transparent—no black box for finance or CS.",
-          author: "Elena Dumitru",
-          role: "RevOps Lead",
-          company: "Fintech SMB",
-          verified: "Verified 2025-08-03",
-          goLive: "Live in 9 days",
-          results: "Results inside 45 days",
-          metrics: ["120k events/week", "4 risk tiers", "<15 min alert latency"],
-          stack: "Stack: n8n-only (Webhook, Data Store, Code, Spreadsheet File)",
-          proof: "Proof: Redacted scoring log on file"
-        }
       ]
     }
   }
@@ -473,64 +381,6 @@ export default function SolutionsSection() {
                       ))}
                     </div>
 
-                    {solution.detail.testimonials?.length ? (
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                            Why teams choose our n8n-only builds
-                          </h4>
-                          <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                            Transparent rules, measurable outcomes, verifiable proof. Every quote below ties back to a redacted export or run log on file.
-                          </p>
-                        </div>
-
-                        {solution.detail.testimonials.map((testimonial) => (
-                          <div
-                            key={`${testimonial.author}-${testimonial.company}`}
-                            className="rounded-2xl border border-primary/30 bg-primary/10 p-6"
-                          >
-                            <div className="flex flex-col gap-3">
-                              <div className="flex flex-wrap items-start justify-between gap-3">
-                                <p className="text-sm italic text-primary leading-relaxed">
-                                  “{testimonial.quote}”
-                                </p>
-                                <span className="inline-flex items-center gap-2 rounded-full bg-background/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
-                                  <span>Verified</span>
-                                  <span className="font-normal tracking-[0.2em] text-primary/70">
-                                    {testimonial.verified}
-                                  </span>
-                                </span>
-                              </div>
-
-                              <div className="text-sm font-semibold text-foreground">
-                                {testimonial.author}
-                                <span className="text-muted-foreground font-normal"> · {testimonial.role}, {testimonial.company}</span>
-                              </div>
-
-                              <div className="text-xs text-muted-foreground space-y-1">
-                                <p>{testimonial.goLive}</p>
-                                <p>{testimonial.results}</p>
-                                <p>{testimonial.stack}</p>
-                                <p>{testimonial.proof}</p>
-                              </div>
-
-                              {testimonial.metrics?.length ? (
-                                <div className="mt-2 flex flex-wrap gap-2">
-                                  {testimonial.metrics.map((metric) => (
-                                    <span
-                                      key={metric}
-                                      className="inline-flex items-center rounded-full bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary"
-                                    >
-                                      {metric}
-                                    </span>
-                                  ))}
-                                </div>
-                              ) : null}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : null}
 
                     <Button className="w-full h-12 text-base font-semibold">
                       Book a discovery call
