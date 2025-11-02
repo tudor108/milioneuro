@@ -19,7 +19,7 @@
    - **Region**: Alege cel mai apropiat (ex: `Frankfurt` pentru România)
    - **Branch**: `main` (sau branch-ul tău)
    - **Root Directory**: `.` (lasă gol pentru root)
-   - **Build Command**: `npm install && npm run build && npm run build:server`
+   - **Build Command**: `npm install --include=dev && npm run build && npm run build:server`
    - **Start Command**: `npm run start:server`
 
 4. **Variabile de mediu:**
