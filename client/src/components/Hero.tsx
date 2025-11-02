@@ -22,7 +22,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl leading-relaxed">
-            Unlock productivity, cut costs, and scale smarter with no-code/low-code + custom AI workflows.
+            Unlock productivity, cut costs, and scale smarter with no-code/low-code + custom AI workflows. Deploy from our library of 1,050+ ready-to-ship n8n automations tailored to your stack.
           </p>
           
           <div className="flex flex-wrap gap-4 mb-12">

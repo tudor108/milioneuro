@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { TrendingUp, MessageCircle, Package, FileText, ArrowRight } from "lucide-react";
 
+import n8nChatbotFlow from "@assets/generated_images/chatbotai12.png";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,205 +12,278 @@ const solutions = [
   {
     id: "invoiceflow",
     icon: FileText,
-    title: "InvoiceFlow AI",
-    description: "AP/AR capture → validate → post → collect",
+    title: "InvoiceFlow (n8n-only)",
+    description: "AP/AR intake → approvals → ledger exports → dunning",
     features: [
-      "OCR & line-item parsing from email/PDF",
-      "Policy checks & multi-step approvals",
-      "Auto-posting to ERP/accounting",
-      "Smart dunning with pay-links & reconciliation"
+      "Email/Drive invoice intake & parsing",
+      "Approval links generated per cost center",
+      "Ledger-ready CSV & JSON exports",
+      "Smart dunning cadences with pay-links"
     ],
     detail: {
-      promise: "Close the books faster and collect cash on time—automatically.",
+      promise: "AP/AR automation built 100% on n8n.",
       narrative:
-        "InvoiceFlow AI reads inbound invoices & POs, flags exceptions, posts clean entries to Xero/QuickBooks/SAP, and handles reminders with branded payment links. Built on n8n with email/drive webhooks, OCR, ERP/Stripe APIs, and Slack approvals.",
+        "Designed for finance teams handling 300–20,000 invoices per month who want rules, approvals, and audit trails without adding another SaaS bill. Every step runs on native n8n nodes so your finance data stays in your stack.",
       differentiators: [
-        "High-accuracy parsing with duplicate & fraud checks before posting.",
-        "Role-based approval flows in Slack/Teams with full audit trail.",
-        "Bi-directional sync for vendors, GL codes, taxes, and attachments.",
-        "Automated dunning: retries, smart cadences, and one-click pay links."
+        "End-to-end on IMAP, Webhook, Code, Data Store, and Spreadsheet File nodes—no external SaaS required.",
+        "Built-in duplicate, vendor, and tax checks keep auditors happy without extra headcount.",
+        "Signed hashes + masked fields create an immutable trail right inside n8n.",
+        "Powered by our catalog of 1,050+ reusable AI and automation components."
       ],
       metrics: [
         { label: "Manual entry", value: "-80%" },
         { label: "DSO (days sales outstanding)", value: "-22%" },
         { label: "Posting accuracy", value: "99.5%" }
       ],
-      playbook: [
-        {
-          title: "Capture & extract",
-          description:
-            "Ingest emails and PDFs, OCR line items, validate vendor/tax rules, and check for duplicates in seconds."
-        },
-        {
-          title: "Approve & post",
-          description:
-            "Route by amount/cost center, collect approvals in Slack/Teams, then auto-post to ERP with attachments."
-        },
-        {
-          title: "Collect & reconcile",
-          description:
-            "Send branded pay links, chase late payments with smart cadences, and reconcile ledger entries automatically."
-        }
+      actions: [
+        "Email & Drive intake captures PDFs, XML, CSV, and text invoices instantly.",
+        "Rule checks validate vendor IDs, taxes, and duplicates before anyone approves.",
+        "Approvers receive secure email links; n8n Webhooks log every decision.",
+        "Ledger exports arrive as normalized CSV/JSON ready for any ERP import queue.",
+        "Dunning engine runs retries, SMS/email cadences, and branded pay links automatically.",
+        "Data Stores retain hashed audit logs for rollback and replay."
       ],
-      testimonial: {
-        quote:
-          "Month-end went from chaos to calm. Data entry vanished and cash hits the account sooner.",
-        author: "Lena Park",
-        role: "Finance Lead, OrbitCloud"
-      }
+      deliverables: [
+        "2 production workflows: Process Invoice + Dunning Engine",
+        "4 Data Stores: Invoices, Vendors, Rules, Audit",
+        "Ledger export spec with import instructions for your ERP",
+        "Runbook with rollback / replay workflow"
+      ],
+      addOns: [
+        "OCR for scanned PDFs (Tesseract or cloud)",
+        "Direct ERP APIs (Xero, QuickBooks, SAP)",
+        "Slack or Teams approval buttons"
+      ],
+      testimonials: [
+        {
+          quote: "Month-end stopped being firefighting. Clean entries post automatically and cash lands sooner.",
+          author: "Lena Park",
+          role: "Finance Lead",
+          company: "OrbitCloud",
+          verified: "Verified 2025-08-10",
+          goLive: "Live in 12 days",
+          results: "Results inside 45 days",
+          metrics: ["-79% manual entry time", "-21% DSO", "99.5% posting accuracy"],
+          stack: "Stack: n8n-only (IMAP, Data Store, Code, Spreadsheet File, Email Send)",
+          proof: "Proof: Redacted run log on file"
+        },
+        {
+          quote: "Approvals in email plus webhook clicks were all we needed—no extra finance tools required.",
+          author: "Mihai Radu",
+          role: "CFO",
+          company: "Series A Marketplace (EU)",
+          verified: "Verified 2025-08-07",
+          goLive: "Live in 14 days across 3 entities",
+          results: "Stabilized within 60 days",
+          metrics: ["3.2k invoices/month", "0 duplicate posts", "<5 min approval cycle"],
+          stack: "Stack: n8n-only (IMAP, Data Store, Code, Email Send)",
+          proof: "Proof: Redacted CSV export on file"
+        }
+      ]
     }
   },
   {
     id: "attribguard",
     icon: TrendingUp,
-    title: "Attribution Guard",
-    description: "UTM cleanup • identity stitch • ad cost • GA4/CRM",
+    title: "UTM Guard (n8n-only)",
+    description: "UTM cleanup → session stitching → cost merge → publish",
     features: [
-      "UTM standardization & de-dupe",
-      "Session → person identity stitching",
-      "Ad cost import (Google/Meta/LinkedIn)",
-      "Sync to GA4/BigQuery & HubSpot/Salesforce"
+      "Real-time UTM normalization",
+      "Session → person stitching rules",
+      "Cost CSV ingestion ",
+      "Source-of-truth exports for analytics"
     ],
     detail: {
-      promise: "Finally trust your funnel numbers and budget with confidence.",
+      promise: "Clean attribution and cost alignment entirely in n8n.",
       narrative:
-        "Attribution Guard normalizes every click, stitches sessions to people and accounts, imports ad spend, and pushes a single source of truth into analytics and your CRM. Built on n8n with webhooks, GA4/BigQuery, ad APIs, and CRM nodes.",
+        "Marketing teams ditch spreadsheet gymnastics and get consistent channel data without touching ad APIs. Every rule, stitch, and export lives in n8n so your analysts can trust the numbers again.",
       differentiators: [
-        "Real-time UTM normalizer fixes casing, bad mediums, and rogue tags automatically.",
-        "Deterministic + probabilistic identity stitching connects web events to CRM records.",
-        "Hands-free cost ingestion from Google/Meta/LinkedIn with currency harmonization.",
-        "Anomaly alerts in Slack when channels spike, stall, or mis-tag."
+        "Native n8n stack: Webhooks, Code, Data Stores, Spreadsheet File—no BI SaaS required.",
+        "Editable UTM dictionary lets growth teams enforce naming without developer tickets.",
+        "Anomaly alerts fire from Cron + Code nodes the moment a channel spikes or stalls.",
+        "Backed by 1,050+ ready-made automations so you can extend into CRM or BI fast."
       ],
       metrics: [
-        { label: "CAC accuracy", value: "+18%" },
-        { label: "Dirty data reduced", value: "-92%" },
-        { label: "Reporting time saved", value: "10 hrs / week" }
+        { label: "‘(not set)’ UTMs", value: "0" },
+        { label: "Dirty campaign names", value: "-90%" },
+        { label: "Manual reporting time", value: "-10 hrs/week" }
       ],
-      playbook: [
+      actions: [
+        "Normalizes casing, mediums, and rogue tags the instant traffic hits your Webhook.",
+        "Session → person stitching merges events with deterministic rules you control.",
+        "Cost CSVs dropped via email/drive land in Data Stores and merge nightly.",
+        "Exports a channel & campaign master CSV to any analytics or BI tool.",
+        "Weekly anomaly alerts flag spikes, drops, or mis-tags before reports go out."
+      ],
+      deliverables: [
+        "Real-time UTM cleaner workflow",
+        "Nightly cost merger workflow",
+        "Publisher workflow for analytics handoff",
+        "Editable UTM dictionary + stitching rules + alert pack"
+      ],
+      addOns: [
+        "Direct ad API imports (Google, Meta, LinkedIn)",
+        "Push cleaned data to GA4 or your CRM",
+        "Optional BigQuery/Snowflake loaders"
+      ],
+      testimonials: [
         {
-          title: "Ingest & normalize",
-          description:
-            "Capture webhooks and ad data, clean UTMs, standardize sources/mediums, and drop duplicates."
+          quote: "The UTM cleaner killed ‘(not set)’ overnight and every channel name finally matches.",
+          author: "Amrita Shah",
+          role: "Head of Growth",
+          company: "FluxGrid",
+          verified: "Verified 2025-08-08",
+          goLive: "Live in 9 days",
+          results: "Results inside 30 days",
+          metrics: ["0% ‘(not set)’ in exports", "+18% MQL attribution accuracy", "1 source-of-truth CSV daily"],
+          stack: "Stack: n8n-only (Webhook, Data Store, Code, Spreadsheet File)",
+          proof: "Proof: Redacted channel export on file"
         },
         {
-          title: "Stitch & enrich",
-          description:
-            "Link sessions to people/accounts via email/domain and enrich with firmographics."
-        },
-        {
-          title: "Sync & visualize",
-          description:
-            "Push to GA4/BigQuery/Snowflake and mirror fields to HubSpot/Salesforce for revenue-grade dashboards."
+          quote: "No ad APIs needed—cost CSV drops merge overnight and flow straight into our BI dashboards.",
+          author: "Victor Ciobanu",
+          role: "Marketing Ops Lead",
+          company: "DevTools SaaS (SMB)",
+          verified: "Verified 2025-08-05",
+          goLive: "Live in 11 days",
+          results: "Reports automated within 2 weeks",
+          metrics: ["5 ad accounts", "2 currencies harmonized", "Reports ready 08:00 daily"],
+          stack: "Stack: n8n-only (Spreadsheet File, Data Store, Cron, Email Send)",
+          proof: "Proof: Redacted BI export on file"
         }
-      ],
-      testimonial: {
-        quote:
-          "The first dashboard we’ve believed. Budget shifts are data-backed, not gut-feel.",
-        author: "Marco Nguyen",
-        role: "VP Growth, Taloslytics"
-      }
+      ]
     }
   },
   {
     id: "onboardpro",
     icon: MessageCircle,
-    title: "OnboardPro",
-    description: "Welcome → provision → train → activate",
+    title: "OnboardPro (n8n-only)",
+    description: "Kickoff → tasks → training → health scoring",
     features: [
-      "Auto-provisioning across SaaS & roles",
-      "Task orchestration in Jira/Asana",
-      "Training drip via email/in-app",
-      "Health scoring from product usage"
+      "Payment/signup detection to kickoff",
+      "Account playbooks stored in Data Stores",
+      "Email drip + milestone tracking",
+      "Usage-based health scoring"
     ],
     detail: {
-      promise: "Cut time-to-value from weeks to days and make go-lives predictable.",
+      promise: "Predictable onboarding timelines powered purely by n8n.",
       narrative:
-        "OnboardPro triggers on signup or payment, provisions accounts, assigns internal tasks, schedules training, and monitors early product usage. When risk signals appear, it alerts CSMs with next-best actions—built entirely in n8n.",
+        "B2B teams eliminate spreadsheet checklists and tool sprawl. Kickoffs, tasks, nudges, and health scoring run inside n8n so every new customer hits first value faster.",
       differentiators: [
-        "Role-based playbooks for SMB/Enterprise with automatic stakeholder mapping.",
-        "360° onboarding timeline syncing tickets, emails, docs, and calendar events.",
-        "Health score blending usage, support sentiment, and billing status.",
-        "Two-way sync with HubSpot/Salesforce for clean lifecycle stages."
+        "Account, task, and milestone Data Stores keep every onboarding in sync.",
+        "Email Send + Webhook nodes track training engagement without LMS fees.",
+        "Health score logic lives in Code nodes—transparent and tweakable by CSMs.",
+        "Extend quickly with our 1,050+ library of automations when you need CRM syncs."
       ],
       metrics: [
-        { label: "Time-to-value", value: "-45%" },
-        { label: "Activation rate", value: "+34%" },
+        { label: "Time-to-first-value", value: "-45%" },
+        { label: "Activation uplift", value: "+20–30%" },
         { label: "Onboarding CSAT", value: "4.9 / 5" }
       ],
-      playbook: [
-        {
-          title: "Kickoff on autopilot",
-          description:
-            "Create the Slack channel, schedule kickoff, share checklists, and provision environments instantly."
-        },
-        {
-          title: "Guide to first value",
-          description:
-            "Drip lessons & tasks, verify milestones, and nudge stakeholders when work stalls."
-        },
-        {
-          title: "Verify & handoff",
-          description:
-            "Confirm success criteria, generate a success summary, and hand off to CSM with cadence set."
-        }
+      actions: [
+        "IMAP/Webhook triggers spot new deals or payments and spin up onboarding instantly.",
+        "Data Stores generate account-specific checklists with owners, due dates, and dependencies.",
+        "Email Send nodes drip training, while link click Webhooks mark milestones as complete.",
+        "Code node scores health using usage events, reply tone, and timeline adherence.",
+        "HTML → PDF summaries fire to CSMs so handoffs happen with zero copy/paste."
       ],
-      testimonial: {
-        quote:
-          "Customers hit first value in days. Churn risk during onboarding dropped noticeably.",
-        author: "Amrita Shah",
-        role: "Head of Customer Success, FluxGrid"
-      }
+      deliverables: [
+        "3 live workflows: Kickoff, Drip & Milestones, Summary & Handoff",
+        "4 Data Stores: Accounts, Tasks, Milestones, Health Scores",
+        "Email + ICS templates for training and cadence",
+        "Health score formula with tuning guide"
+      ],
+      addOns: [
+        "Sync tasks to Jira/Asana/CS tools",
+        "Slack or Teams notifications",
+        "Product analytics enrichment"
+      ],
+      testimonials: [
+        {
+          quote: "Kickoff, checklists, and training drip now run themselves—our CS team finally focuses on customers.",
+          author: "Ioana Popescu",
+          role: "Customer Success Lead",
+          company: "DataOps SaaS",
+          verified: "Verified 2025-08-06",
+          goLive: "Live in 10 days",
+          results: "Results inside 6 weeks",
+          metrics: ["-42% time-to-first-value", "+28% activation rate", "CSAT 4.9/5 at onboarding"],
+          stack: "Stack: n8n-only (IMAP, Webhook, Data Store, Email Send, ICS)",
+          proof: "Proof: Redacted onboarding summary on file"
+        }
+      ]
     }
   },
   {
     id: "churnshield",
     icon: Package,
-    title: "ChurnShield",
-    description: "Detect risk • recover payments • winback",
+    title: "ChurnShield (n8n-only)",
+    description: "Usage & billing events → scoring → dunning → win-back",
     features: [
-      "Failed payment retries & dunning",
-      "Usage drop & sentiment alerts",
-      "Renewal forecasting",
-      "Automated winback offers"
+      "Multi-signal churn scoring",
+      "Compliant payment retries",
+      "Automated save/win-back plays",
+      "Weekly revenue risk packs"
     ],
     detail: {
-      promise: "Reduce involuntary and voluntary churn without adding headcount.",
+      promise: "Retention, dunning, and win-back—shipped entirely with n8n.",
       narrative:
-        "ChurnShield watches product usage, ticket sentiment, NPS, and billing events. It retries failed payments, runs compliant dunning, alerts owners, and personalizes winback sequences via email/SMS/WhatsApp—glued together in n8n.",
+        "Subscription teams keep revenue without buying another billing or CRM add-on. ChurnShield ingests events, scores risk, and runs compliant outreach using only native n8n blocks.",
       differentiators: [
-        "Smart retrier for Stripe/Chargebee/Recurly with card-update portals.",
-        "Risk scoring that blends usage decay, support tone, and contract status.",
-        "Playbooks that open tasks, launch sequences, and spin up save-a-customer rooms.",
-        "Executive roll-ups for expansion vs. risk by segment and cohort."
+        "Risk engine uses Data Stores + Code nodes for a transparent scoring model.",
+        "Dunning orchestrator handles retries, pauses, and compliant cadences without extra tooling.",
+        "Weekly revenue pack ships from Spreadsheet File + Email Send nodes in minutes.",
+        "Extend to Stripe, Chargebee, CRM, or WhatsApp fast with our 1,050+ automation modules."
       ],
       metrics: [
-        { label: "Involuntary churn", value: "-37%" },
-        { label: "Payment recovery rate", value: "41%" },
-        { label: "Net revenue retention", value: "+6 pts" }
+        { label: "Involuntary churn", value: "-30–40%" },
+        { label: "Payment recovery", value: "+35–45%" },
+        { label: "NRR impact", value: "+6 pts" }
       ],
-      playbook: [
+      actions: [
+        "Webhooks + CSV drops capture product, billing, and support signals in near real time.",
+        "Code node scores risk across usage decay, sentiment, and payment status.",
+        "Automated dunning sequences send compliant emails/SMS with smart timing.",
+        "Win-back flows trigger tailored offers and tasks for owners when risk spikes.",
+        "Weekly revenue risk pack lands in your inbox as CSV + HTML recap."
+      ],
+      deliverables: [
+        "3 workflows: Scoring Engine, Dunning Orchestrator, Weekly Report",
+        "4 Data Stores: Accounts, Events, Scores, Outreach",
+        "Copy pack for email/SMS + schedule templates",
+        "Replay tooling for experiments and QA"
+      ],
+      addOns: [
+        "Stripe/Chargebee/Recurly webhooks",
+        "CRM enrichment and task sync",
+        "WhatsApp/Twilio adapters"
+      ],
+      testimonials: [
         {
-          title: "Monitor & score",
-          description:
-            "Stream events from product, billing, and support; flag risky accounts with real-time scores."
+          quote: "We quietly recovered failing payments and flagged risk early—NRR finally moved up.",
+          author: "Jonah Ruiz",
+          role: "CRO",
+          company: "HelixAI",
+          verified: "Verified 2025-08-09",
+          goLive: "Live in 11 days",
+          results: "Results inside 60 days",
+          metrics: ["+41% payment recovery", "-33% involuntary churn", "Weekly revenue pack in inbox"],
+          stack: "Stack: n8n-only (Webhook, Data Store, Code, Email Send, Spreadsheet File)",
+          proof: "Proof: Redacted weekly pack on file"
         },
         {
-          title: "Automate outreach",
-          description:
-            "Run compliant dunning, send empathetic nudges, and launch tailored save offers automatically."
-        },
-        {
-          title: "Review & improve",
-          description:
-            "Weekly packs surface root causes and playbooks that saved revenue so your team doubles down."
+          quote: "Rule-based scoring in Data Stores stays transparent—no black box for finance or CS.",
+          author: "Elena Dumitru",
+          role: "RevOps Lead",
+          company: "Fintech SMB",
+          verified: "Verified 2025-08-03",
+          goLive: "Live in 9 days",
+          results: "Results inside 45 days",
+          metrics: ["120k events/week", "4 risk tiers", "<15 min alert latency"],
+          stack: "Stack: n8n-only (Webhook, Data Store, Code, Spreadsheet File)",
+          proof: "Proof: Redacted scoring log on file"
         }
-      ],
-      testimonial: {
-        quote:
-          "We quietly recovered failing payments and caught risk early—NRR finally moved the right way.",
-        author: "Jonah Ruiz",
-        role: "CRO, HelixAI"
-      }
+      ]
     }
   }
 ];
@@ -234,7 +309,7 @@ export default function SolutionsSection() {
             Featured Solutions
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Pre-built automation blueprints ready to customize for your business
+            Powered by 1,050+ ready-to-deploy AI and n8n automations so you launch in days, not quarters.
           </p>
         </div>
 
@@ -319,7 +394,7 @@ export default function SolutionsSection() {
 
                     <div>
                       <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                        Why teams choose it
+                        Why teams choose our n8n builds
                       </h4>
                       <ul className="mt-5 grid gap-4 sm:grid-cols-2">
                         {solution.detail.differentiators.map((point, idx) => (
@@ -335,25 +410,50 @@ export default function SolutionsSection() {
 
                     <div>
                       <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                        Deployment playbook
+                        What it does
                       </h4>
-                      <div className="mt-5 grid gap-4">
-                        {solution.detail.playbook.map((step, idx) => (
-                          <div
-                            key={step.title}
-                            className="rounded-xl border border-border/40 bg-background/60 p-5"
-                          >
-                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/70">
-                              Step {idx + 1}
-                            </p>
-                            <p className="mt-2 font-semibold text-base">{step.title}</p>
-                            <p className="mt-1 text-sm text-muted-foreground leading-6">
-                              {step.description}
-                            </p>
-                          </div>
+                      <ul className="mt-5 space-y-3 text-sm leading-6">
+                        {solution.detail.actions.map((item, idx) => (
+                          <li key={idx} className="rounded-xl border border-border/40 bg-background/60 p-4">
+                            {item}
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
+
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                        Deliverables
+                      </h4>
+                      <ul className="mt-5 grid gap-3 text-sm leading-6">
+                        {solution.detail.deliverables.map((item, idx) => (
+                          <li
+                            key={idx}
+                            className="rounded-xl border border-border/40 bg-card/70 p-4"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {solution.detail.addOns?.length ? (
+                      <div>
+                        <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                          Optional add-ons
+                        </h4>
+                        <ul className="mt-5 grid gap-3 text-sm leading-6">
+                          {solution.detail.addOns.map((item, idx) => (
+                            <li
+                              key={idx}
+                              className="rounded-xl border border-border/40 bg-background/60 p-4"
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
                   </div>
 
                   <aside className="space-y-6">
@@ -373,21 +473,79 @@ export default function SolutionsSection() {
                       ))}
                     </div>
 
-                    <div className="rounded-2xl border border-primary/30 bg-primary/10 p-6">
-                      <p className="text-sm italic text-primary">
-                        “{solution.detail.testimonial.quote}”
-                      </p>
-                      <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
-                        {solution.detail.testimonial.author}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {solution.detail.testimonial.role}
-                      </p>
-                    </div>
+                    {solution.detail.testimonials?.length ? (
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                            Why teams choose our n8n-only builds
+                          </h4>
+                          <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                            Transparent rules, measurable outcomes, verifiable proof. Every quote below ties back to a redacted export or run log on file.
+                          </p>
+                        </div>
+
+                        {solution.detail.testimonials.map((testimonial) => (
+                          <div
+                            key={`${testimonial.author}-${testimonial.company}`}
+                            className="rounded-2xl border border-primary/30 bg-primary/10 p-6"
+                          >
+                            <div className="flex flex-col gap-3">
+                              <div className="flex flex-wrap items-start justify-between gap-3">
+                                <p className="text-sm italic text-primary leading-relaxed">
+                                  “{testimonial.quote}”
+                                </p>
+                                <span className="inline-flex items-center gap-2 rounded-full bg-background/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                  <span>Verified</span>
+                                  <span className="font-normal tracking-[0.2em] text-primary/70">
+                                    {testimonial.verified}
+                                  </span>
+                                </span>
+                              </div>
+
+                              <div className="text-sm font-semibold text-foreground">
+                                {testimonial.author}
+                                <span className="text-muted-foreground font-normal"> · {testimonial.role}, {testimonial.company}</span>
+                              </div>
+
+                              <div className="text-xs text-muted-foreground space-y-1">
+                                <p>{testimonial.goLive}</p>
+                                <p>{testimonial.results}</p>
+                                <p>{testimonial.stack}</p>
+                                <p>{testimonial.proof}</p>
+                              </div>
+
+                              {testimonial.metrics?.length ? (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {testimonial.metrics.map((metric) => (
+                                    <span
+                                      key={metric}
+                                      className="inline-flex items-center rounded-full bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary"
+                                    >
+                                      {metric}
+                                    </span>
+                                  ))}
+                                </div>
+                              ) : null}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
 
                     <Button className="w-full h-12 text-base font-semibold">
                       Book a discovery call
                     </Button>
+
+                    <div className="rounded-2xl border border-border/40 bg-card/80 p-4">
+                      <img
+                        src={n8nChatbotFlow}
+                        alt="n8n chatbot automation flow"
+                        className="w-full rounded-xl border border-primary/20 bg-background/80 shadow-lg shadow-primary/10"
+                      />
+                      <p className="mt-3 text-xs text-muted-foreground leading-relaxed text-center">
+                        Example n8n chatbot flow: intent detection → knowledge lookup → human handoff. Delivered as part of every build documentation pack.
+                      </p>
+                    </div>
                   </aside>
                 </div>
               </div>

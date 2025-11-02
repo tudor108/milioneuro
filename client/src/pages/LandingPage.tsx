@@ -8,6 +8,7 @@ import PricingSection from "@/components/PricingSection";
 import OutcomesSection from "@/components/OutcomesSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
+import LegalSection from "@/components/LegalSection";
 import Footer from "@/components/Footer";
 
 export default function LandingPage() {
@@ -24,6 +25,7 @@ export default function LandingPage() {
         <OutcomesSection />
         <FAQSection />
         <ContactSection />
+        <LegalSection />
       </main>
       <Footer />
     </div>

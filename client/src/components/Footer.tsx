@@ -72,7 +72,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="flex gap-3">
               <a 
-                href="mailto:contact@autoai.com" 
+                href="mailto:autoai831@gmail.com" 
                 className="w-10 h-10 rounded-lg bg-muted hover-elevate flex items-center justify-center"
                 data-testid="link-email"
               >
@@ -102,11 +102,11 @@ export default function Footer() {
               © {currentYear} AutoAI. All rights reserved.
             </div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-foreground transition-colors">
+              <a href="#privacy" className="hover:text-foreground transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-foreground transition-colors">
-                Terms of Service
+              <a href="#terms" className="hover:text-foreground transition-colors">
+                Terms of Use
               </a>
             </div>
           </div>
