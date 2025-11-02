@@ -193,7 +193,7 @@ export default function ContactSection() {
                 Get in Touch
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                We typically respond within 241210 hours. Book a free 15-minute consultation to discuss your automation needs.
+                We typically respond within 24 hours. Book a free 15-minute consultation to discuss your automation needs.
               </p>
             </div>
             
