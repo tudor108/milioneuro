@@ -42,7 +42,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const { data, error } = await resend.emails.send({
         from: "AutoAI <onboarding@resend.dev>",
-        replyTo: email, // Set reply-to to the user's email so you can reply directly
         to: "autoai831@gmail.com",
         subject: `New Contact Form Submission from ${name}`,
         html: `
