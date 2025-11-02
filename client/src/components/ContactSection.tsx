@@ -204,6 +204,9 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="font-semibold mb-1">Email</div>
+                  <a href="mailto:autoai831@gmail.com" className="text-primary">
+                    autoai831@gmail.com
+                  </a>
                   <div className="text-muted-foreground">autoai831@gmail.com</div>
                 </div>
               </div>

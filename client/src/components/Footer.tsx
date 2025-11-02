@@ -99,11 +99,11 @@ export default function Footer() {
               © {currentYear} AutoAI. All rights reserved.
             </div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-foreground transition-colors">
+              <a href="#privacy" className="hover:text-foreground transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-foreground transition-colors">
-                Terms of Service
+              <a href="#terms" className="hover:text-foreground transition-colors">
+                Terms of Use
               </a>
             </div>
           </div>
