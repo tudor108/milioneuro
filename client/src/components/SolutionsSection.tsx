@@ -382,7 +382,12 @@ export default function SolutionsSection() {
                     </div>
 
 
-                    <Button className="w-full h-12 text-base font-semibold">
+                    <Button 
+                      className="w-full h-12 text-base font-semibold"
+                      onClick={() => {
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
                       Book a discovery call
                     </Button>
 
