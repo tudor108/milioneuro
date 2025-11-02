@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -69,29 +69,26 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <div className="flex gap-3">
-              <a 
-                href="mailto:contact@autoai.com" 
-                className="w-10 h-10 rounded-lg bg-muted hover-elevate flex items-center justify-center"
-                data-testid="link-email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-lg bg-muted hover-elevate flex items-center justify-center"
-                data-testid="link-linkedin"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-lg bg-muted hover-elevate flex items-center justify-center"
-                data-testid="link-twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
+            <h4 className="font-semibold mb-4">Contact</h4>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-muted-foreground" />
+                <a 
+                  href="tel:+40770421255" 
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  +40 770 421 255
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-muted-foreground" />
+                <a 
+                  href="tel:+40747605037" 
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  +40 747 605 037
+                </a>
+              </div>
             </div>
           </div>
         </div>
